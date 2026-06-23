@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prefers Reduced Motion CSS Demo - Accessibility best practices for disabling animations">
+  <title>Prefers Reduced Motion Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="demo-wrapper">
+    <div class="demo-card">
+      <h1 class="demo-heading">Prefers Reduced Motion</h1>
+      <p class="demo-description">
+        This demo showcases the <code>prefers-reduced-motion</code> CSS media query.
+        When a user enables the <strong>"Reduce motion"</strong> setting in their
+        operating system, all animations and transitions on this page are
+        gracefully disabled while preserving the layout.
+      </p>
+      <p class="demo-description">
+        Try enabling <strong>Reduce Motion</strong> in your OS accessibility
+        settings to see the difference.
+      </p>
+      <div class="demo-animation-area">
+        <div class="demo-box demo-box--fade">Fade</div>
+        <div class="demo-box demo-box--slide">Slide</div>
+        <div class="demo-box demo-box--pulse">Pulse</div>
+      </div>
+      <button class="demo-button" type="button">
+        Hover &amp; Click Me
+      </button>
+      <footer class="demo-footer">
+        <p>
+          Built for
+          <a href="https://github.com/krutthiikaaa/EaseMotion-css" target="_blank" rel="noopener noreferrer">
+            EaseMotion&nbsp;CSS
+          </a>
+          &mdash; Accessibility first.
+        </p>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>

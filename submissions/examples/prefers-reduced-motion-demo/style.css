@@ -1,0 +1,233 @@
+/* ============================================================
+   Prefers Reduced Motion Demo — Original CSS
+   Demonstrates custom fade, slide, and pulse animations
+   with a @media (prefers-reduced-motion: reduce) override.
+   ============================================================ */
+
+/* ---------- Custom Keyframes ---------- */
+
+@keyframes demoFadeInOut {
+  0%   { opacity: 0.15; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.15; }
+}
+
+@keyframes demoSlideLeftRight {
+  0%   { transform: translateX(-24px); }
+  50%  { transform: translateX(24px); }
+  100% { transform: translateX(-24px); }
+}
+
+@keyframes demoPulseScale {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+@keyframes demoHeadingGlow {
+  0%   { text-shadow: 0 0 6px rgba(124, 58, 237, 0); }
+  50%  { text-shadow: 0 0 18px rgba(124, 58, 237, 0.55); }
+  100% { text-shadow: 0 0 6px rgba(124, 58, 237, 0); }
+}
+
+@keyframes demoButtonShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ---------- Base Reset ---------- */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- Page Layout ---------- */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #e2e0f0;
+  padding: 1.5rem;
+}
+
+/* ---------- Demo Card ---------- */
+
+.demo-card {
+  max-width: 540px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  padding: 2.5rem 2rem;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+/* ---------- Heading ---------- */
+
+.demo-heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #c4b5fd;
+  animation: demoHeadingGlow 3s ease-in-out infinite;
+}
+
+/* ---------- Description ---------- */
+
+.demo-description {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+  color: #b8b5cc;
+}
+
+.demo-description code {
+  background: rgba(124, 58, 237, 0.2);
+  padding: 0.15em 0.4em;
+  border-radius: 0.3em;
+  font-size: 0.88em;
+  color: #ddd6fe;
+}
+
+/* ---------- Animation Area ---------- */
+
+.demo-animation-area {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+  flex-wrap: wrap;
+}
+
+.demo-box {
+  width: 80px;
+  height: 80px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* Fade box */
+.demo-box--fade {
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  animation: demoFadeInOut 2.5s ease-in-out infinite;
+}
+
+/* Slide box */
+.demo-box--slide {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  animation: demoSlideLeftRight 2.8s ease-in-out infinite;
+}
+
+/* Pulse box */
+.demo-box--pulse {
+  background: linear-gradient(135deg, #059669, #34d399);
+  animation: demoPulseScale 2s ease-in-out infinite;
+}
+
+/* ---------- Button ---------- */
+
+.demo-button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 0.65rem;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    #7c3aed 0%,
+    #a78bfa 25%,
+    #7c3aed 50%,
+    #a78bfa 75%,
+    #7c3aed 100%
+  );
+  background-size: 200% auto;
+  animation: demoButtonShimmer 4s linear infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+}
+
+.demo-button:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.55);
+}
+
+.demo-button:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
+}
+
+/* ---------- Footer ---------- */
+
+.demo-footer {
+  margin-top: 1.75rem;
+  font-size: 0.82rem;
+  color: #8a86a0;
+}
+
+.demo-footer a {
+  color: #a78bfa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.demo-footer a:hover {
+  color: #c4b5fd;
+}
+
+/* ============================================================
+   REDUCED MOTION — Accessibility Override
+   When the user's OS has "Reduce motion" enabled, all
+   animations are disabled and transitions are removed.
+   Layout is fully preserved.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .demo-heading {
+    text-shadow: none;
+  }
+
+  .demo-box--fade {
+    opacity: 1;
+  }
+
+  .demo-box--slide {
+    transform: translateX(0);
+  }
+
+  .demo-box--pulse {
+    transform: scale(1);
+  }
+
+  .demo-button {
+    background-size: 100% auto;
+  }
+}
